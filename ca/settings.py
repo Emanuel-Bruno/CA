@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_app_novadata',
+    'admin_reorder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'ca.urls'
@@ -129,3 +131,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ## configuracoes - Django App Novadata
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
+
+ADMIN_REORDER = (
+    {
+        'app': 'auth',
+        'label': 'Autenticação e Autorização',
+        'models': (
+            'auth.User',
+            'auth.Group',
+        )
+    },
+    {
+        'app': 'core',
+        'label': 'Essencial',
+        'models': (
+            'core.Administrador',
+            'core.Aluno',
+            'core.Professor',
+        )
+    },
+    {
+        'app': 'django_app_novadata',
+        'label': 'Configurações',
+        'models': (
+            'django_app_novadata.ConteudoCustom',
+            'django_app_novadata.ConfiguracaoAutenticacao',
+        )
+    },
+)
