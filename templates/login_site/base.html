@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load templates_tags_geral_site %}
+{% load static %}
 {% configuracao_autenticacao_geral as configuracao_autenticacao_geral %}
 <html lang="pt-br">
 <head>
@@ -9,6 +10,7 @@
     {% if configuracao_autenticacao_geral.logo %}
     <link rel="shortcut icon" href="{{configuracao_autenticacao_geral.logo.url}}" type="image/x-icon">
     {% endif %}
+    <link rel="stylesheet" href="{% static 'autenticacao/css/style.css' %}">
 
     <title>{% block title %}{% endblock %}</title>
     {% if configuracao_autenticacao_geral and configuracao_autenticacao_geral.extra_head %}

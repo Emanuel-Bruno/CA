@@ -6,18 +6,18 @@ Início
 {% endblock %}
 
 {% block 'conteudo' %}
-<div class="container">
+<div class="container mt-4">
     <div class="row">
-        <div class="col-3">
-            <div class="card">
-                <div class="imagem d-flex justify-content-center" title="Sua imagem de perfil">
-                    <a href="{% url 'avatar_change' %}">{% avatar user 65 %}</a>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card rounded-16px">
+                <div class="imagem d-flex justify-content-center mt-2" title="Sua imagem de perfil">
+                    <a href="{% url 'avatar_change' %}">{% avatar user 100 class="img-circle img-perfil" id="user_avatar" %}</a>
                 </div>
-                <div class="nome d-flex justify-content-center" title="Nome/Sobrenome">
+                <div class="nome d-flex justify-content-center mt-2" title="Nome/Sobrenome">
                     <b>{{request.user.get_full_name}}</b>
                     
                 </div>
-                <div class="vinculo d-flex justify-content-center" title="Neste vinculo você é">
+                <div class="vinculo d-flex justify-content-center mt-2" title="Neste vinculo você é">
                     <span>Aluno</span>
                 </div>
                 <div class="opts" title="Nome/Sobrenome">
@@ -26,8 +26,8 @@ Início
             </div>
             
         </div>
-        <div class="col-3"><div class="card"></div></div>
-        <div class="col-6"><div class="card"></div></div>
+        <div class="col-12 col-sm-6 col-lg-3"><div class="card"></div></div>
+        <div class="col-12 col-sm-12 col-lg-6"><div class="card"></div></div>
     </div>
 </div>
 {% endblock %}
