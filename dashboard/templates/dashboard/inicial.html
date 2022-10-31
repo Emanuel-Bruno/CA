@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
+{% load avatar_tags %}
 
 {% block 'titulo' %}
 Início
 {% endblock %}
 
 {% block 'conteudo' %}
-Olá
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="imagem d-flex justify-content-center" title="Sua imagem de perfil">
+                    <a href="{% url 'avatar_change' %}">{% avatar user 65 %}</a>
+                </div>
+                <div class="nome d-flex justify-content-center" title="Nome/Sobrenome">
+                    <b>{{request.user.get_full_name}}</b>
+                    
+                </div>
+                <div class="vinculo d-flex justify-content-center" title="Neste vinculo você é">
+                    <span>Aluno</span>
+                </div>
+                <div class="opts" title="Nome/Sobrenome">
+                    {% include 'dashboard/opts/aluno.html' %}
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-3"><div class="card"></div></div>
+        <div class="col-6"><div class="card"></div></div>
+    </div>
+</div>
 {% endblock %}

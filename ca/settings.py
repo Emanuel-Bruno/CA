@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'dashboard',
+    #libs externas
+    'avatar',
 ]
 
 MIDDLEWARE = [
