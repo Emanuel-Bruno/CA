@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('django_app_novadata.urls')),
     path('', include('dashboard.urls')),
+    path('avatar/', include('avatar.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
