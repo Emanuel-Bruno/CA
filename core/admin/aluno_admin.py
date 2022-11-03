@@ -8,7 +8,8 @@ class AlunoAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'nome',
-        'usuario'
+        'usuario',
+        'vinculos'
     ]
 
     search_fields = [
