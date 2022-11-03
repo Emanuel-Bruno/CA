@@ -150,6 +150,8 @@ ADMIN_REORDER = (
             'core.Curso',
             'core.Periodo',
             'core.Vinculo',
+            'core.Registro',
+            'core.Turma',
             'core.Administrador',
             'core.Aluno',
             'core.Professor',
