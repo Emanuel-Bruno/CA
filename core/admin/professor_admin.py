@@ -7,10 +7,12 @@ from ..models import Professor
 class ProfessorAdmin(admin.ModelAdmin):
     list_display = [
         'id',
-        'nome'
+        'nome',
+        'usuario'
     ]
 
     search_fields = [
         'id',
-        'nome'
+        'nome',
+        'usuario'
     ]

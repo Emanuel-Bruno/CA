@@ -20,6 +20,13 @@ class Aluno(models.Model):
         blank=True
     )
 
+    @property
+    def vinculos(self):
+        vinculos = ''
+        for vinculo in self.vinculo_set.all():
+            vinculos = f'{vinculo} '
+        return vinculos
+
     def __str__(self):
         return self.nome
 

@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -139,14 +139,17 @@ ADMIN_REORDER = (
         'app': 'auth',
         'label': 'Autenticação e Autorização',
         'models': (
-            'auth.User',
             'auth.Group',
+            'auth.User',
         )
     },
     {
         'app': 'core',
         'label': 'Essencial',
         'models': (
+            'core.Curso',
+            'core.Periodo',
+            'core.Vinculo',
             'core.Administrador',
             'core.Aluno',
             'core.Professor',
@@ -154,7 +157,7 @@ ADMIN_REORDER = (
     },
     {
         'app': 'django_app_novadata',
-        'label': 'Configurações',
+        'label': 'Configurações do Desenvolvedor',
         'models': (
             'django_app_novadata.ConteudoCustom',
             'django_app_novadata.ConfiguracaoAutenticacao',

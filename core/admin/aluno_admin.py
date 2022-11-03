@@ -7,10 +7,13 @@ from ..models import Aluno
 class AlunoAdmin(admin.ModelAdmin):
     list_display = [
         'id',
-        'nome'
+        'nome',
+        'usuario',
+        'vinculos'
     ]
 
     search_fields = [
         'id',
-        'nome'
+        'nome',
+        'usuario'
     ]
