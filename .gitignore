@@ -1,3 +1,3 @@
+*.sqlite3
 .env
-*pyc # Não manda os arquivos cache do Python
-*.sqlite3 # Não manda os bancos
+*.pyc
