@@ -7,10 +7,12 @@ from ..models import Administrador
 class AdministradorAdmin(admin.ModelAdmin):
     list_display = [
         'id',
-        'nome'
+        'nome',
+        'usuario'
     ]
 
     search_fields = [
         'id',
-        'nome'
+        'nome',
+        'usuario'
     ]

@@ -139,8 +139,8 @@ ADMIN_REORDER = (
         'app': 'auth',
         'label': 'Autenticação e Autorização',
         'models': (
-            'auth.User',
             'auth.Group',
+            'auth.User',
         )
     },
     {
@@ -150,6 +150,7 @@ ADMIN_REORDER = (
             'core.Administrador',
             'core.Aluno',
             'core.Professor',
+            'core.Curso',
         )
     },
     {
