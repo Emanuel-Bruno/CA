@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from ..models import Aluno
-
+from .registro_inline import RegistroInline
 
 @admin.register(Aluno)
 class AlunoAdmin(admin.ModelAdmin):
@@ -9,7 +9,8 @@ class AlunoAdmin(admin.ModelAdmin):
         'id',
         'nome',
         'usuario',
-        'vinculos'
+        'vinculos',
+        'turmas_atuais'
     ]
 
     search_fields = [
@@ -17,3 +18,5 @@ class AlunoAdmin(admin.ModelAdmin):
         'nome',
         'usuario'
     ]
+
+    inlines = [RegistroInline]

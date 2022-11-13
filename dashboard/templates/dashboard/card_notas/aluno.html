@@ -1,0 +1,33 @@
+<div class="list-group mx-2 my-1">
+  <h5 class="mt-2">
+    <b>Notas</b>
+  </h5>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        
+        <th scope="col">Turma</th>
+        <th scope="col">Unidade 01</th>
+        <th scope="col">Unidade 02</th>
+        <th scope="col">Unidade 03</th>
+        <th scope="col">Nota de Recuperação</th>
+        <th scope="col">Média</th>
+        <th scope="col">Situação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for registro in usuario.usuario.registro_set.all %}
+      <tr>
+        <th scope="row">{{registro.turma.nome}}</th>
+        <td>{{registro.nota1}}</td>
+        <td>{{registro.nota2}}</td>
+        <td>{{registro.nota3}}</td>
+        <td>{{registro.nota_recuperacao}}</td>
+        <td>{{registro.media}}</td>
+        <td>{{registro.situacao}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

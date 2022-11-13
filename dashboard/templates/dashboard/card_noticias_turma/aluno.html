@@ -1,0 +1,22 @@
+{% load avatar_tags %}
+<div class="container">
+    <div class="card card-interno my-1 mx-2">
+        <b>Notícias da turma</b>
+    </div>
+    <div>
+      {% for noticia in noticias %}
+      <div class="card-interno">
+        <article>
+          <h5>{{noticia.titulo}}</h5>
+          <br>
+          <p>{{noticia.texto}}</p>
+          <br>
+          <small>Data da última atualização: {{noticia.data_atualizacao}}</small>
+          <small>Data de Criação: {{noticia.data_atualizacao}}</small>
+          <p>{{noticia.usuario_criacao.get_full_name}}</p>
+          {% avatar noticia.usuario_criacao 100 class="img-circle img-perfil" id="user_avatar" %}
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+</div>
