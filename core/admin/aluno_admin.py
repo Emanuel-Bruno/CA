@@ -9,7 +9,8 @@ class AlunoAdmin(admin.ModelAdmin):
         'id',
         'nome',
         'usuario',
-        'vinculos'
+        'vinculos',
+        'turmas_atuais'
     ]
 
     search_fields = [

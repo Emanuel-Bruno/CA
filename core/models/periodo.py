@@ -17,6 +17,11 @@ class Periodo(models.Model):
         null=True
     )
 
+    ativo = models.BooleanField(
+        verbose_name="Ativo",
+        default=False
+    )
+
     def __str__(self):
         return_str = f''
         if self.data_inicio:

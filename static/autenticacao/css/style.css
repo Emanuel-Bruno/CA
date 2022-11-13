@@ -1,0 +1,18 @@
+body{
+    background-color: #276370;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 10px;
+    border-radius: 4px;
+    background: white;
+    color: black;
+}
+
+input[type=submit]{
+    background: #161722;
+    color: #f3f3f3;
+}

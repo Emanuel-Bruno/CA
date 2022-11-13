@@ -50,6 +50,30 @@ class Registro(models.Model):
         decimal_places=2,
         max_digits=5
     )
+    SITUACAO_CHOICES = (
+        ('Reprovado', 'Reprovado'),
+        ('Aprovado', 'Aprovado'),
+        ('Em andamento', 'Em andamento'),
+    )
+
+    situacao = models.CharField(
+        verbose_name='Situação',
+        max_length=100,
+        choices=SITUACAO_CHOICES,
+        default='Em andamento',
+    )
+
+    @property
+    def media(self):
+        media = (self.nota1 + self.nota2 + self.nota3)/3
+        
+        if media >= 7:
+            return media
+
+        if media >=3:
+            media = (self.nota1 + self.nota2 + self.nota3 + self.nota_recuperacao)/4
+
+        return media
 
     def __str__(self):
         return f'{self.aluno} - {self.turma}'

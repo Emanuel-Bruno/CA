@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="card card-interno my-1 mx-2">
+        <b>Turmas</b>
+    </div>
+        
+
+        <div class="accordion my-1" id="accordion-bootstrap">
+        {% for turma in usuario.usuario.turmas_atuais %}
+        
+          <div class="accordion-item mx-2">
+            <h2 class="accordion-header" id="header-accordion-turma-{{turma.id}}">
+              <button class="accordion-button collapsed card-interno" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-turma-{{turma.id}}" aria-expanded="false" aria-controls="accordion-turma-{{turma.id}}">
+                <b>{{turma.nome}}</b>
+              </button>
+            </h2>
+            <div id="accordion-turma-{{turma.id}}" class="accordion-collapse collapse" aria-labelledby="header-accordion-turma-{{turma.id}}" data-bs-parent="#accordion-bootstrap">
+              <div class="accordion-body">
+                <table>
+                  <thead>
+                    <tr>
+                      <th><b>Professor</b></th>
+                      <th><b>Sala</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{turma.professor|default_if_none:"-"}}</td>
+                      <td>{{turma.sala|default_if_none:"-"}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <thead>
+                    <tr>
+                      <th><b>Horário</b></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{turma.horario|default_if_none:"-"}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a type="button" class="btn btn-dark" href="{% url 'pagina_turma' turma.id %}">Ver Disciplinas</a>
+                
+                
+              </div>
+            </div>
+          </div>
+          
+        {% endfor %}
+      </div>
+</div>

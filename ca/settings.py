@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'admin_reorder.middleware.ModelAdminReorder',
 ]
+MIDDLEWARE += ('crum.CurrentRequestUserMiddleware',)
 
 ROOT_URLCONF = 'ca.urls'
 
@@ -152,9 +153,12 @@ ADMIN_REORDER = (
             'core.Vinculo',
             'core.Registro',
             'core.Turma',
+            'core.NoticiaTurma',
             'core.Administrador',
             'core.Aluno',
             'core.Professor',
+            'core.BlocoSalas',
+            'core.Sala'
         )
     },
     {

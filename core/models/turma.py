@@ -3,7 +3,8 @@ from django.db import models
 from .disciplina import Disciplina
 from .periodo import Periodo
 from .curso import Curso
-
+from .professor import Professor
+from .sala import Sala
 
 class Turma(models.Model):
     '''
@@ -48,6 +49,27 @@ class Turma(models.Model):
         max_length=100,
         choices=STATUS_CHOICES,
         default=('Cadastrando', 'Cadastrando')
+    )
+
+    sala = models.ForeignKey(
+        Sala,
+        verbose_name='Sala',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+
+    professor = models.ForeignKey(
+        Professor,
+        verbose_name='Professor',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
+
+    horario = models.CharField(
+        verbose_name='horario',
+        max_length=100,
+        default='',
+        blank=True
     )
 
 
