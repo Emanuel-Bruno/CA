@@ -2,9 +2,10 @@ from django.contrib import admin
 
 from ..models import Aluno
 from .registro_inline import RegistroInline
+from import_export.admin import ImportExportModelAdmin
 
 @admin.register(Aluno)
-class AlunoAdmin(admin.ModelAdmin):
+class AlunoAdmin(ImportExportModelAdmin):
     list_display = [
         'id',
         'nome',

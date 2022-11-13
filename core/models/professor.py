@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 class Professor(models.Model):
     '''
@@ -19,6 +20,22 @@ class Professor(models.Model):
         null=True,
         blank=True
     )
+
+    @property
+    def turmas_atuais(self):
+        from .turma import Turma
+        turmas = []
+        data = date.today()
+        for turma in Turma.objects.filter(professor=self):
+            if turma.periodo and data > turma.periodo.data_inicio and data < turma.periodo.data_final:      
+                turmas.append(turma)
+
+        return turmas
+
+    @property
+    def get_qtd_turmas_atuais(self):
+
+        return len(self.turmas_atuais)
 
     def __str__(self):
         return self.nome

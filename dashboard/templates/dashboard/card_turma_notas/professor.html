@@ -1,0 +1,58 @@
+{% load avatar_tags %}
+{% load static %}
+{% load replace_virgula_ponto %}
+<div class="container-geral">
+    <div class="card card-interno my-1">
+        <b>Notas - {{turma.nome}} ({{turma.periodo}})</b>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            
+            <th scope="col">Aluno</th>
+            <th scope="col">Unidade 01</th>
+            <th scope="col">Unidade 02</th>
+            <th scope="col">Unidade 03</th>
+            <th scope="col">Nota de Recuperação</th>
+            <th scope="col">Média</th>
+            <th scope="col">Situação</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for registro in turma.registro_set.all %}
+          <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="registro" value="{{registro.id}}">
+            <tr>
+                
+                <th scope="row">{{registro.aluno.nome}}</th>
+                <td><input class="form-control" step="0.01" min="0" max="10" type="number" name="nota1" value="{% replace_virgula_ponto registro.nota1 %}"></td>
+                <td><input class="form-control" step="0.01" min="0" max="10" type="number" name="nota2" value="{% replace_virgula_ponto registro.nota2 %}"></td>
+                <td><input class="form-control" step="0.01" min="0" max="10" type="number" name="nota3" value="{% replace_virgula_ponto registro.nota3 %}"></td>
+                <td><input class="form-control" step="0.01" min="0" max="10" type="number" name="nota_recuperacao" value="{% replace_virgula_ponto registro.nota_recuperacao %}"></td>
+                <td>{{registro.media}}</td>
+                <td>
+                    <select class="form-control" name="situacao" id="id_situacao">
+                        {% for opt in options_situacao %}
+                            <option value="{{opt.0}}"
+                            {% if registro.situacao == opt.0 %}
+                            selected
+                            {% endif %}
+                            >
+                                {{opt.1}}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-dark" type="submit" title="Salvar"><img height="25px" src="{% static 'front_assets/imgs/save_btn.png' %}" alt=""></button>
+                </td>
+            </tr>
+            </form>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>

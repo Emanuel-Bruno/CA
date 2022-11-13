@@ -1,0 +1,20 @@
+{% load avatar_tags %}
+<div class="container-geral">
+    <div class="card card-interno my-1">
+        <b>Escolha uma turma:</b>
+    </div>
+    <div>
+      {% for turma in turmas %}
+        <div class="card card-interno">
+          <div class="row">
+            <div class="col-9 p-2">
+              <p>{{turma.nome}} {{turma.periodo}}</p>
+            </div>
+            <div class="col-3 p-2">
+            <a class="btn btn-outline-info " href="{% url 'pagina_turma_notas' turma.id %}">Ver as notas dessa turma</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>

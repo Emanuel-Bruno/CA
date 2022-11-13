@@ -8,6 +8,7 @@ from .periodo import Periodo
 from .professor import Professor
 from .registro import Registro
 from .sala import Sala
+from .tarefa_turma import TarefaTurma
 from .turma import Turma
 from .vinculo import Vinculo
 
@@ -22,6 +23,7 @@ __all__=[
     Professor,
     Registro,
     Sala,
+    TarefaTurma,
     Turma,
     Vinculo
 ]

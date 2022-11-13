@@ -44,15 +44,12 @@ class NoticiaTurma(models.Model):
 	)
 
     def save(self, *args, **kwargs):
-        self.notificacao_tres_dias=False
-        self.notificacao_seis_dias=False
-        self.notificacao_sete_dias=False
 
         user = get_current_user()
         if user and not user.pk:
             user = None
         if not self.pk:
-            self.created_by = user
+            self.usuario_criacao = user
         
         super(NoticiaTurma, self).save(*args, **kwargs)
 

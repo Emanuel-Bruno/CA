@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from ..models import Turma
 from .noticia_turma_inline import NoticiaTurmaInline
+from .tarefa_turma_inline import TarefaTurmaInline
 
 @admin.register(Turma)
 class TurmaAdmin(admin.ModelAdmin):
@@ -24,4 +25,4 @@ class TurmaAdmin(admin.ModelAdmin):
         'curso'
     ]
     
-    inlines = [NoticiaTurmaInline]
+    inlines = [NoticiaTurmaInline, TarefaTurmaInline]

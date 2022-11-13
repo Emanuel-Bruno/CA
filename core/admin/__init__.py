@@ -10,6 +10,8 @@ from .professor_admin import ProfessorAdmin
 from .registro_admin import RegistroAdmin
 from .registro_inline import RegistroInline
 from .sala_admin import SalaAdmin
+from .tarefa_turma_admin import TarefaTurmaAdmin
+from .tarefa_turma_inline import TarefaTurmaInline
 from .turma_admin import TurmaAdmin
 from .vinculo_admin import VinculoAdmin
 
@@ -27,6 +29,8 @@ __all__ = [
     RegistroAdmin,
     RegistroInline,
     SalaAdmin,
+    TarefaTurmaAdmin,
+    TarefaTurmaInline,
     TurmaAdmin,
     VinculoAdmin,
 ]

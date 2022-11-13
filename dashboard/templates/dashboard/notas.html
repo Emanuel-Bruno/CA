@@ -11,7 +11,7 @@ Início
 <div class="container mt-4">
     <div class="row">
         <div class="col-12 col-sm-6 col-lg-3">
-            <div class="card rounded-16px">
+            <div class="card rounded-16px container-geral">
                 <div class="imagem d-flex justify-content-center mt-2" title="Sua imagem de perfil">
                     <a href="{% url 'avatar_change' %}">{% avatar user 100 class="img-circle img-perfil" id="user_avatar" %}</a>
                 </div>
@@ -40,7 +40,7 @@ Início
             
         </div>
         <div class="col-12 col-sm-12 col-lg-9">
-            <div class="card">
+            <div class="card rounded-16px container-geral">
                 {% if tipo_usuario == 'aluno' %}
                     {% include 'dashboard/card_notas/aluno.html' %}
                 {% elif tipo_usuario == 'professor' %}

@@ -33,19 +33,41 @@ def pagina_turma_aluno(request, usuario, id):
 
     return render(
         request,
-        'dashboard/turma.html',
+        'dashboard/turma_noticias.html',
         context
     )
 
 @login_required
 def pagina_turma_professor(request, usuario, id):
+
+    try:
+        turma = Turma.objects.get(id=id, professor=usuario['usuario'])
+        if not Registro.objects.filter(turma=turma).exists():
+            return render(
+                request, 
+                'person403.html', 
+                {
+                    'message': 'Você não tem acesso a essa turma'
+                }
+            )
+    except:
+        return render(
+            request, 
+            'person404.html', 
+            {
+                'message': 'Turma não encontrada'
+            }
+        )
+
     context = {
-        'usuario': usuario
+        'turma': turma,
+        'usuario': usuario,
+        'noticias': turma.noticiaturma_set.all()[:10]
     }
 
     return render(
         request,
-        'dashboard/turma.html',
+        'dashboard/turma_noticias.html',
         context
     )
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'dashboard',
     #libs externas
     'avatar',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +155,7 @@ ADMIN_REORDER = (
             'core.Registro',
             'core.Turma',
             'core.NoticiaTurma',
+            'core.TarefaTurma',
             'core.Administrador',
             'core.Aluno',
             'core.Professor',

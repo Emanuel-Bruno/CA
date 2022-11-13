@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .tipo_usuario import tipo_usuario
-
+from core.models import Turma
 @login_required
 def pagina_notas_aluno(request, usuario):
     context = {
@@ -17,8 +17,11 @@ def pagina_notas_aluno(request, usuario):
 
 @login_required
 def pagina_notas_professor(request, usuario):
+
+    
     context = {
-        'usuario': usuario
+        'usuario': usuario,
+        'turmas': Turma.objects.filter(professor=usuario['usuario'])
     }
 
     return render(

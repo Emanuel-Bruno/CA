@@ -1,0 +1,16 @@
+:root {
+    --bg-main: #276370;
+    --bg-primary: #161722;
+    --bg-secound: #B0C8DB;
+    --cinza: #F3F3F3;
+    --preto: #161722;
+    --branco: #fff;
+    
+}
+
+body{
+    background-color: var(--bg-main);
+    margin: 0;
+    padding: 0;
+}
+

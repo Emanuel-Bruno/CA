@@ -1,0 +1,21 @@
+{% load avatar_tags %}
+<div class="container-geral">
+    <div class="card card-interno my-1">
+        <b>Tarefas</b>
+    </div>
+    <div>
+      {% for tarefa in tarefas %}
+      <div class="card-interno my-1">
+        <article>
+          <h5>{{tarefa.titulo}}</h5>
+          <p>{{tarefa.descricao}}</p>
+          <small>Data da última atualização: {{tarefa.data_atualizacao}}</small>
+          <br>
+          <small>Data de Criação: {{tarefa.data_atualizacao}}</small>
+          <p>{{tarefa.usuario_criacao.get_full_name}}</p>
+          {% avatar tarefa.usuario_criacao 100 class="img-circle img-perfil" id="user_avatar" %}
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+</div>

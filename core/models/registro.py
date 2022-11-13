@@ -1,6 +1,8 @@
 from django.db import models
 from .aluno import Aluno
 from .turma import Turma
+from decimal import Decimal
+
 
 class Registro(models.Model):
     '''
@@ -48,7 +50,9 @@ class Registro(models.Model):
         verbose_name='Nota da Recuperacao',
         default=0,
         decimal_places=2,
-        max_digits=5
+        max_digits=5,
+        null=True,
+        blank=True
     )
     SITUACAO_CHOICES = (
         ('Reprovado', 'Reprovado'),
@@ -68,12 +72,13 @@ class Registro(models.Model):
         media = (self.nota1 + self.nota2 + self.nota3)/3
         
         if media >= 7:
-            return media
+            return round(media,2)
 
         if media >=3:
-            media = (self.nota1 + self.nota2 + self.nota3 + self.nota_recuperacao)/4
+            nota_recuperacao = self.nota_recuperacao if self.nota_recuperacao else Decimal(0)
+            media = (self.nota1 + self.nota2 + self.nota3 + nota_recuperacao)/4
 
-        return media
+        return round(media,2)
 
     def __str__(self):
         return f'{self.aluno} - {self.turma}'
