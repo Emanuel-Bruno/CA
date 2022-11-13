@@ -32,7 +32,7 @@ def pagina_turmas_tarefa_form_administrador(request):
     return redirect(reverse_lazy('admin:index'))
 
 @login_required
-def pagina_turmas(request, id):
+def pagina_turma_tarefa_form(request, id):
     usuario = tipo_usuario(request.user)
     if usuario:
         if usuario['tipo'] == 'aluno':
