@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .tipo_usuario import tipo_usuario
 from core.forms import NoticiaTurmaForm
+from core.models import Turma
 
 @login_required
 def pagina_turma_noticia_form_aluno(request, usuario, id):
@@ -16,15 +17,22 @@ def pagina_turma_noticia_form_aluno(request, usuario, id):
 
 @login_required
 def pagina_turma_noticia_form_professor(request, usuario, id):
-    form=NoticiaTurmaForm(initial={'turma':id})
+    turma = Turma.objects.get(id=id)
+    form=NoticiaTurmaForm(initial={'turma': turma})
+    if request.method == 'POST':
+        form = NoticiaTurmaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/turmas-noticias/{id}/')
     context = {
         'usuario': usuario,
-        'form': form
+        'form': form,
+        'turma': turma
     }
 
     return render(
         request,
-        'dashboard/turmas.html',
+        'dashboard/turma_noticias_form.html',
         context
     )
 

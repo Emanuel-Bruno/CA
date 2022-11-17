@@ -39,8 +39,22 @@ def pagina_turma_tarefas_aluno(request, usuario, id):
 
 @login_required
 def pagina_turma_tarefas_professor(request, usuario, id):
+    try:
+        professor = usuario['usuario']
+        turma = Turma.objects.get(id=id, professor=professor)
+        
+    except:
+        return render(
+            request, 
+            'person404.html', 
+            {
+                'message': 'Turma não encontrada'
+            }
+        )
     context = {
-        'usuario': usuario
+        'turma': turma,
+        'usuario': usuario,
+        'tarefas': TarefaTurma.objects.filter(turma=turma)
     }
 
     return render(

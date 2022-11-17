@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .tipo_usuario import tipo_usuario
 from core.forms import TarefaTurmaForm
+from core.models import Turma
+
 @login_required
 def pagina_turmas_tarefa_form_aluno(request, usuario, id):
     return render(
@@ -15,15 +17,23 @@ def pagina_turmas_tarefa_form_aluno(request, usuario, id):
 
 @login_required
 def pagina_turmas_tarefa_form_professor(request, usuario, id):
-    form=TarefaTurmaForm(initial={'turma':id})
+    turma = Turma.objects.get(id=id)
+    form=TarefaTurmaForm(initial={'turma': id})
+    if request.method == 'POST':
+        form = TarefaTurmaForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/turmas-tarefas/{id}/')
+
     context = {
         'usuario': usuario,
-        'form': form
+        'form': form,
+        'turma': turma
     }
 
     return render(
         request,
-        'dashboard/turmas.html',
+        'dashboard/turma_tarefas_form.html',
         context
     )
 

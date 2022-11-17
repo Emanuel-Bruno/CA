@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load avatar_tags %}
+{% load tipo_usuario %}
+{% block 'titulo' %}
+Início
+{% endblock %}
+
+{% block 'conteudo' %}
+{% tipo_usuario request.user as tipo_usuario %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card rounded-16px container-geral">
+                <div class="imagem d-flex justify-content-center mt-2" title="Sua imagem de perfil">
+                    <a href="{% url 'avatar_change' %}">{% avatar user 100 class="img-circle img-perfil" id="user_avatar" %}</a>
+                </div>
+                <div class="nome d-flex justify-content-center mt-2" title="Nome/Sobrenome">
+                    <b>{{request.user.get_full_name}}</b>
+                    
+                </div>
+
+                {% if tipo_usuario == 'aluno' %}
+                    <div class="vinculo d-flex justify-content-center mt-2" title="Neste vinculo você é">
+                        <span>Aluno</span>
+                    </div>
+                    <div class="opts" title="Nome/Sobrenome">
+                        {% include 'dashboard/card_pessoal/aluno.html' %}
+                    </div>
+                {% elif tipo_usuario == 'professor' %}
+                    <div class="vinculo d-flex justify-content-center mt-2" title="Neste vinculo você é">
+                        <span>Professor</span>
+                    </div>
+                    <div class="opts" title="Nome/Sobrenome">
+                        {% include 'dashboard/card_pessoal/professor.html' %}
+                    </div>
+                {% endif %}
+
+            </div>
+            
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card rounded-16px">
+                {% if tipo_usuario == 'aluno' %}
+                    {% include 'dashboard/card_escolhas_turma/aluno.html' %}
+                {% elif tipo_usuario == 'professor' %}
+                    {% include 'dashboard/card_escolhas_turma/professor.html' %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-lg-6">
+            <div class="card rounded-16px container-geral">
+                {% if tipo_usuario == 'aluno' %}
+                    {% include 'dashboard/card_turma_noticia_form/aluno.html' %}
+                {% elif tipo_usuario == 'professor' %}
+                    {% include 'dashboard/card_turma_noticia_form/professor.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load avatar_tags %}
+{% load tipo_usuario %}
+{% tipo_usuario request.user as tipo_usuario %}
+
+<div class="container-geral">
+    <div class="card card-interno my-1">
+        <b>Tarefas</b> 
+        {% if tipo_usuario == 'professor' %}
+            <a class="btn btn-outline-dark" href="{% url 'pagina_turma_tarefa_form' turma.id %}">+</a>
+        {% endif %}
+    </div>
+    <div>
+      {% for tarefa in tarefas %}
+      <div class="card-interno my-1">
+        <article>
+          <h5>{{tarefa.titulo}}</h5>
+          <p>{{tarefa.descricao}}</p>
+          <small>Data da última atualização: {{tarefa.data_atualizacao}}</small>
+          <br>
+          <small>Data de Criação: {{tarefa.data_atualizacao}}</small>
+          <p>{{tarefa.usuario_criacao.get_full_name}}</p>
+          {% avatar tarefa.usuario_criacao 100 class="img-circle img-perfil" id="user_avatar" %}
+        </article>
+      </div>
+      
+      {% endfor %}
+    </div>
+</div>

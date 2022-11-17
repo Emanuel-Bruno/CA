@@ -7,4 +7,4 @@ class TarefaTurmaForm(forms.ModelForm):
     class Meta:
         model = TarefaTurma
 
-        fields = '__all__'
+        fields = ['turma', 'titulo', 'descricao', 'anexo']

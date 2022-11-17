@@ -7,4 +7,4 @@ class NoticiaTurmaForm(forms.ModelForm):
     class Meta:
         model = NoticiaTurma
 
-        fields = '__all__'
+        fields = ['turma', 'titulo', 'texto']

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #libs externas
     'avatar',
     'import_export',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
